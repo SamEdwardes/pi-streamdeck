@@ -1,5 +1,4 @@
 from litestar import Litestar, get, post
-import uvicorn
 
 
 @get("/")

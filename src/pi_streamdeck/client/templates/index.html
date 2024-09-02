@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  </head>
+  <body>
+    <header>
+      <!-- title and navigation ... -->
+    </header>
+    <main>
+      <h1>pi-streamdeck</h1>
+      <h2>Commands</h2>
+      <ul>
+        {% for command in commands %}
+        <li>{{ command.name }}</li>
+        {% endfor %}
+      </ul>
+    </main>
+    <footer>
+      <!-- byline and copyright ... -->
+    </footer>    
+  </body>
+</html>

@@ -6,3 +6,8 @@ run-server:
 
 run-client:
   uv run litestar --app src.pi_streamdeck.client.app:app run
+
+
+format:
+  uvx ruff check --select I --fix .
+  uvx ruff format .                  

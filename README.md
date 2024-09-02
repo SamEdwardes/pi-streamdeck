@@ -2,7 +2,7 @@
 
 ## Usage
 
-Start the server:
+Start the server (runs on your computer):
 
 ```bash
 # Run using a python module
@@ -15,7 +15,7 @@ uv run pi-streamdeck-server
 uvx --from git+https://github.com/SamEdwardes/pi-streamdeck pi-streamdeck-server 
 ```
 
-Start the client:
+Start the client (runs on your raspberry pi):
 
 ```bash
 # Run using a python module
