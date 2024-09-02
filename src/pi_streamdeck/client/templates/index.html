@@ -3,6 +3,7 @@
   <head>
     <title>Example</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <script src="https://unpkg.com/htmx.org@2.0.2"></script>
   </head>
   <body>
     <header>
@@ -13,7 +14,14 @@
       <h2>Commands</h2>
       <ul>
         {% for command in commands %}
-        <li>{{ command.name }}</li>
+        <li>
+          <form action="">
+          <button type="submit" hx-post="/run" hx-swap="innerHTML">
+            {{ command.name }}
+          </button>
+            <input type="text" name="command" value="{{ command.command }}">
+          </form>
+        </li>
         {% endfor %}
       </ul>
     </main>

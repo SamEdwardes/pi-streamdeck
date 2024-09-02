@@ -191,15 +191,25 @@ wheels = [
 ]
 
 [package.optional-dependencies]
-picologging = [
-    { name = "picologging" },
-]
 standard = [
     { name = "fast-query-parsers" },
     { name = "jinja2" },
     { name = "jsbeautifier" },
     { name = "uvicorn", extra = ["standard"] },
     { name = "uvloop", marker = "sys_platform != 'win32'" },
+]
+
+[[package]]
+name = "loguru"
+version = "0.7.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "colorama", marker = "sys_platform == 'win32'" },
+    { name = "win32-setctime", marker = "sys_platform == 'win32'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/9e/30/d87a423766b24db416a46e9335b9602b054a72b96a88a241f2b09b560fa8/loguru-0.7.2.tar.gz", hash = "sha256:e671a53522515f34fd406340ee968cb9ecafbc4b36c679da03c18fd8d0bd51ac", size = 145103 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/03/0a/4f6fed21aa246c6b49b561ca55facacc2a44b87d65b8b92362a8e99ba202/loguru-0.7.2-py3-none-any.whl", hash = "sha256:003d71e3d3ed35f0f8984898359d65b79e5b21943f78af86aa5491210429b8eb", size = 62549 },
 ]
 
 [[package]]
@@ -285,25 +295,16 @@ name = "pi-streamdeck"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
-    { name = "litestar", extra = ["picologging", "standard"] },
+    { name = "httpx" },
+    { name = "litestar", extra = ["standard"] },
+    { name = "loguru" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "litestar", extras = ["picologging", "standard"], specifier = ">=2.11.0" }]
-
-[[package]]
-name = "picologging"
-version = "0.9.3"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/2d/6d/3fd3423e0391cf7bfb78d6d7510da77068aeb73a0c6db22a6a0078413cab/picologging-0.9.3.tar.gz", hash = "sha256:6921f86ea0875ac85e252188627e9f04b872895327a7028e06c825ddb888a825", size = 103751 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/65/4a/cfd4d86d23ed1535e6728a13e56a1374105430dad894bb7395e78c0cd974/picologging-0.9.3-cp312-cp312-macosx_10_15_universal2.whl", hash = "sha256:70e6957df044af10ff35d293b8ebad3f04bbfa99f88bcf4fd2a8248d1cd46320", size = 164148 },
-    { url = "https://files.pythonhosted.org/packages/c6/71/7adec10b32be86f54666006e75ee7c941d7823fd4b89289660d4261e8c6d/picologging-0.9.3-cp312-cp312-macosx_10_15_x86_64.whl", hash = "sha256:32d18fb7c089afe9c2a8cb1493021417c872f807d74f3fd6da85e43226664ccd", size = 99348 },
-    { url = "https://files.pythonhosted.org/packages/02/d3/06225fd4e5d09e35aedd82cf2c608c8a7cbe6da0b977c166af1895f6f370/picologging-0.9.3-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:025a6262280374413142648cf5be7944136c54a5cc84b0ff5b2416928d7aec96", size = 166198 },
-    { url = "https://files.pythonhosted.org/packages/c5/69/84a6cb4a9f2f427ba3e207c6a640db7d5f2557ae56cd10a64cdfdf9541ea/picologging-0.9.3-cp312-cp312-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:feaf33a2fd8a9431f3f4de9693569952ebce6e4c92cabe642327130a1d378b6c", size = 178075 },
-    { url = "https://files.pythonhosted.org/packages/96/b9/b7bc99e4193688d1316189e3b8c9788105361f2d9b00fd64ef7911a3a7b9/picologging-0.9.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:06d315458ff92a2df6ce07540b390212d179e3ef2d08b48c356df72be8d0ce2d", size = 166276 },
-    { url = "https://files.pythonhosted.org/packages/9b/6e/21abb1f3efdb4797b792d5afcb215f38971eff412c7d4e6ee5d85d86bcb9/picologging-0.9.3-cp312-cp312-win32.whl", hash = "sha256:502a17cbf7303499e1edcb01b3503caeac204aa5d5f888d4b5ecdb113f0c25ee", size = 78613 },
-    { url = "https://files.pythonhosted.org/packages/34/29/1f3aa01d4b2f97583d7c98259f49cdb425e4980518a7c8348d552dd6a30b/picologging-0.9.3-cp312-cp312-win_amd64.whl", hash = "sha256:16f111cdf7a210eb07bd06932c9a8ff06dc830e213c8a0efbb769e586d1f3efb", size = 87018 },
+requires-dist = [
+    { name = "httpx", specifier = ">=0.27.2" },
+    { name = "litestar", extras = ["standard"], specifier = ">=2.11.0" },
+    { name = "loguru", specifier = ">=0.7.2" },
 ]
 
 [[package]]
@@ -532,4 +533,13 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/72/f6/b8b30a3b134dfdb4ccd1694befa48fddd43783957c988a1dab175732af33/websockets-13.0.1-cp313-cp313-win32.whl", hash = "sha256:254ecf35572fca01a9f789a1d0f543898e222f7b69ecd7d5381d8d8047627bdb", size = 151782 },
     { url = "https://files.pythonhosted.org/packages/3e/88/d94ccc006c69583168aa9dd73b3f1885c8931f2c676f4bdd8cbfae91c7b6/websockets-13.0.1-cp313-cp313-win_amd64.whl", hash = "sha256:ca48914cdd9f2ccd94deab5bcb5ac98025a5ddce98881e5cce762854a5de330b", size = 152212 },
     { url = "https://files.pythonhosted.org/packages/fd/bd/d34c4b7918453506d2149208b175368738148ffc4ba256d7fd8708956732/websockets-13.0.1-py3-none-any.whl", hash = "sha256:b80f0c51681c517604152eb6a572f5a9378f877763231fddb883ba2f968e8817", size = 145262 },
+]
+
+[[package]]
+name = "win32-setctime"
+version = "1.1.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/6b/dd/f95a13d2b235a28d613ba23ebad55191514550debb968b46aab99f2e3a30/win32_setctime-1.1.0.tar.gz", hash = "sha256:15cf5750465118d6929ae4de4eb46e8edae9a5634350c01ba582df868e932cb2", size = 3676 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0a/e6/a7d828fef907843b2a5773ebff47fb79ac0c1c88d60c0ca9530ee941e248/win32_setctime-1.1.0-py3-none-any.whl", hash = "sha256:231db239e959c2fe7eb1d7dc129f11172354f98361c4fa2d6d2d7e278baa8aad", size = 3604 },
 ]
