@@ -20,6 +20,10 @@ async def index() -> Template:
             "commands": [
                 {"name": "Log to ~/tmp/txt.log", "command": "echo xx > ~/tmp/txt.log"},
                 {"name": "Open duckduckgo", "command": "open https://duckduckgo.com"},
+                {"name": "Open WezTerm", "command": "open /Applications/WezTerm.app"},
+                {"name": "Open Arc", "command": "open /Applications/Arc.app"},
+                {"name": "Open Slack", "command": "open /Applications/Slack.app"},
+                {"name": "Open VS Code", "command": "open /Applications/Visual Studio Code.app"},
             ]
         },
     )
