@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Annotated, Any
+from typing import Annotated 
 
 import httpx
 from litestar import Litestar, get, post
@@ -18,29 +18,29 @@ async def index() -> Template:
         template_name="index.html",
         context={
             "commands": [
-                {"name": "Hello world", "command": "echo hello world"},
-                {"name": "Crazy command!!!", "command": "echo crazy command!!"},
-                {"name": "Whats up doc?", "command": "echo whats up doc?"},
+                {"name": "Log to ~/tmp/txt.log", "command": "echo xx > ~/tmp/txt.log"},
+                {"name": "Open duckduckgo", "command": "open https://duckduckgo.com"},
             ]
         },
     )
 
 
+
 @post("/run")
 async def post_run(
     data: Annotated[dict[str, str], Body(media_type=RequestEncodingType.URL_ENCODED)],
-) -> dict[str, str]:
+) -> Template:
     logger.info(f"Running command: {data['command']=}")
     command = data["command"]
+
     with httpx.Client(base_url="http://samedwardes-64g2:8000") as client:
         r = client.post("/run", json={"command": command})
         logger.info(r.status_code)
         logger.info(r.text)
 
-    return {
-        "command": command,
-        "result": r.text,
-    }
+    return Template(
+        template_str=f"<p>{r.json()}</p>", 
+    )
 
 
 app = Litestar(

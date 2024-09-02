@@ -298,6 +298,8 @@ dependencies = [
     { name = "httpx" },
     { name = "litestar", extra = ["standard"] },
     { name = "loguru" },
+    { name = "rich" },
+    { name = "sh" },
 ]
 
 [package.metadata]
@@ -305,6 +307,8 @@ requires-dist = [
     { name = "httpx", specifier = ">=0.27.2" },
     { name = "litestar", extras = ["standard"], specifier = ">=2.11.0" },
     { name = "loguru", specifier = ">=0.7.2" },
+    { name = "rich", specifier = ">=13.8.0" },
+    { name = "sh", specifier = ">=2.0.7" },
 ]
 
 [[package]]
@@ -401,6 +405,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/3a/a9/a1f1af87e83832d794342fbc09c96cc7cd6798b8dfb8adfbe6ccbef8d70c/rich_click-1.8.3.tar.gz", hash = "sha256:6d75bdfa7aa9ed2c467789a0688bc6da23fbe3a143e19aa6ad3f8bac113d2ab3", size = 38209 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c6/ea/5a0c5a8e6532e971983d1b0fc99268eb66a10f489da35d9022ce01044191/rich_click-1.8.3-py3-none-any.whl", hash = "sha256:636d9c040d31c5eee242201b5bf4f2d358bfae4db14bb22ec1cafa717cfd02cd", size = 35032 },
+]
+
+[[package]]
+name = "sh"
+version = "2.0.7"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/14/7a/5148402146d360a6d15922814a3b065b52be3a5fe878a8834d3ce4e7d33f/sh-2.0.7.tar.gz", hash = "sha256:029d45198902bfb967391eccfd13a88d92f7cebd200411e93f99ebacc6afbb35", size = 345477 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/15/c2/79f9dea6fc544c0eb79ed5018a38860c52d597c4be66c2cf2029bea5b3fd/sh-2.0.7-py3-none-any.whl", hash = "sha256:2f2f79a65abd00696cf2e9ad26508cf8abb6dba5745f40255f1c0ded2876926d", size = 38103 },
 ]
 
 [[package]]

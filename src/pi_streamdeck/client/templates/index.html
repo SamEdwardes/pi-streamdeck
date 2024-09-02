@@ -3,27 +3,29 @@
   <head>
     <title>Example</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <meta charset="UTF-8">
+  <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/htmx.org@2.0.2"></script>
   </head>
   <body>
     <header>
       <!-- title and navigation ... -->
     </header>
-    <main>
-      <h1>pi-streamdeck</h1>
-      <h2>Commands</h2>
-      <ul>
+    <main class="p-8">
+      <h1 class="text-2xl font-bold">pi-streamdeck</h1>
+      <h2 class="text-xl font-bold">Commands</h2>
+      <div class="grid grid-cols-4 gap-4 justify-items-stretch">
         {% for command in commands %}
-        <li>
           <form action="">
-          <button type="submit" hx-post="/run" hx-swap="innerHTML">
+          <button type="submit" hx-post="/run" hx-target="#logs" hx-swap="afterbegin" class="block rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
             {{ command.name }}
           </button>
-            <input type="text" name="command" value="{{ command.command }}">
+            <input type="hidden" name="command" value="{{ command.command }}">
           </form>
-        </li>
         {% endfor %}
-      </ul>
+      </div>
+      <h2 class="text-xl font-bold">Log</h2>
+      <div id="logs"></div>
     </main>
     <footer>
       <!-- byline and copyright ... -->
